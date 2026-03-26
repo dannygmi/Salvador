@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
 import { ServiceWorkerReg } from '@/components/ui/ServiceWorkerReg'
+import { InstallPrompt } from '@/components/ui/InstallPrompt'
 
 export const metadata: Metadata = {
   title: 'SpineQuest — Disc Recovery',
@@ -34,6 +35,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className="bg-bg text-white antialiased">
         <ServiceWorkerReg />
+        <InstallPrompt />
         {children}
       </body>
     </html>

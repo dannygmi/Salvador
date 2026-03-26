@@ -72,9 +72,9 @@ export default function HomePage() {
     <>
       {!user.disclaimerAccepted && <Disclaimer onAccept={acceptDisclaimer} />}
 
-      <main className="min-h-screen pb-24 max-w-lg mx-auto">
+      <main className="min-h-screen pb-nav max-w-lg mx-auto">
         {/* Header */}
-        <div className="px-4 pt-safe pt-6 pb-4">
+        <div className="px-4 pt-app pb-4">
           <div className="flex items-center justify-between mb-1">
             <div>
               <h1 className="text-2xl font-black">SpineQuest</h1>

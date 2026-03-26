@@ -48,11 +48,14 @@ export const ExerciseCard = ({ exercise, onComplete, phaseAccent, isCompleted = 
       )}
       glowColor={isCompleted ? undefined : accent}
     >
-      {/* Header */}
-      <div className="p-4">
+      {/* Header — full row is tappable */}
+      <button
+        className="w-full text-left p-4 active:bg-white/5 transition-colors"
+        onClick={() => setExpanded(!expanded)}
+      >
         <div className="flex items-start justify-between gap-3">
           <div className="flex-1 min-w-0">
-            <div className="flex items-center gap-2 mb-1">
+            <div className="flex items-center gap-2 mb-1.5">
               <span
                 className="text-xs font-bold px-2 py-0.5 rounded-full"
                 style={{ backgroundColor: `${accent}20`, color: accent }}
@@ -63,31 +66,30 @@ export const ExerciseCard = ({ exercise, onComplete, phaseAccent, isCompleted = 
                 <Zap size={12} /> {exercise.xp} XP
               </span>
             </div>
-            <h3 className="font-bold text-base leading-tight">{exercise.name}</h3>
+            <h3 className="font-bold text-[17px] leading-tight">{exercise.name}</h3>
             <p className="text-muted text-sm mt-0.5">
               {exercise.sets && !exercise.timed ? `${exercise.sets} sets × ` : ''}{exercise.reps ?? exercise.durationStr ?? ''}
             </p>
           </div>
-          {isCompleted && (
-            <div className="w-8 h-8 rounded-full flex items-center justify-center shrink-0" style={{ backgroundColor: `${accent}20` }}>
-              <span className="text-lg">✓</span>
-            </div>
-          )}
-          <button
-            onClick={() => setExpanded(!expanded)}
-            className="text-muted hover:text-white p-1 shrink-0"
-          >
-            {expanded ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
-          </button>
+          <div className="flex items-center gap-2 shrink-0 pt-1">
+            {isCompleted && (
+              <div className="w-7 h-7 rounded-full flex items-center justify-center" style={{ backgroundColor: `${accent}20`, color: accent }}>
+                <span className="text-sm font-bold">✓</span>
+              </div>
+            )}
+            <span className="text-muted">
+              {expanded ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+            </span>
+          </div>
         </div>
 
         {/* Equipment badge */}
         {exercise.equipment && (
-          <div className="mt-2 text-xs text-muted flex items-center gap-1">
+          <div className="mt-1.5 text-xs text-muted flex items-center gap-1">
             <Info size={11} /> {exercise.equipment}
           </div>
         )}
-      </div>
+      </button>
 
       {/* Expanded content */}
       {expanded && (
@@ -106,12 +108,12 @@ export const ExerciseCard = ({ exercise, onComplete, phaseAccent, isCompleted = 
           </div>
 
           {/* Muscle map toggle */}
-          <div className="px-4 pb-2">
+          <div className="px-4 pb-3">
             <button
               onClick={() => setShowMuscles(!showMuscles)}
-              className="text-xs font-medium text-muted hover:text-white underline underline-offset-2"
+              className="flex items-center gap-1.5 text-sm font-medium text-gold/80 active:text-gold py-2"
             >
-              {showMuscles ? 'Hide muscle map' : 'Show muscle map'}
+              <span>{showMuscles ? '▲ Hide muscle map' : '▼ Show muscle map'}</span>
             </button>
             {showMuscles && (
               <div className="mt-3 flex justify-center">

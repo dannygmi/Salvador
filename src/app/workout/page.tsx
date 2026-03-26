@@ -62,7 +62,7 @@ export default function WorkoutPage() {
   if (sessionComplete && !levelUpData) {
     return (
       <>
-        <main className="min-h-screen flex flex-col items-center justify-center p-6 text-center pb-24">
+        <main className="min-h-screen flex flex-col items-center justify-center p-6 text-center pb-nav">
           <div className="text-6xl mb-4">🎉</div>
           <h1 className="text-3xl font-black mb-2">Workout Complete!</h1>
           <p className="text-muted mb-4">
@@ -94,9 +94,9 @@ export default function WorkoutPage() {
         />
       )}
 
-      <main className="min-h-screen pb-24 max-w-lg mx-auto">
+      <main className="min-h-screen pb-nav max-w-lg mx-auto">
         {/* Header */}
-        <div className="px-4 pt-safe pt-6 pb-4">
+        <div className="px-4 pt-app pb-4">
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-2xl font-black">Workout</h1>

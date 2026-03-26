@@ -50,8 +50,8 @@ export default function ProgressPage() {
 
   return (
     <>
-      <main className="min-h-screen pb-24 max-w-lg mx-auto">
-        <div className="px-4 pt-safe pt-6 pb-4">
+      <main className="min-h-screen pb-nav max-w-lg mx-auto">
+        <div className="px-4 pt-app pb-4">
           <h1 className="text-2xl font-black">Progress</h1>
           <p className="text-muted text-sm">Track your recovery journey</p>
         </div>
