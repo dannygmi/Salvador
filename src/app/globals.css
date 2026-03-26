@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-outfit: 'Outfit', system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-outfit);
+  background-color: #0D0D0D;
+  color: #F5F5F5;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior: none;
+}
+
+body {
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+
+/* Safe area for notched phones */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #2A2A2A;
+  border-radius: 2px;
+}
+
+/* Smooth transitions */
+* {
+  transition-property: color, background-color, border-color, opacity, transform;
+  transition-duration: 150ms;
+  transition-timing-function: ease;
+}
+
+/* Remove transition from animated elements */
+.no-transition * {
+  transition: none !important;
+}
+
+/* XP bar animation */
+@keyframes xpFill {
+  from { width: 0%; }
+}
+
+/* Flame flicker */
+@keyframes flicker {
+  0%, 100% { opacity: 1; transform: scaleY(1); }
+  50% { opacity: 0.85; transform: scaleY(1.05); }
+}
+
+.flame-icon {
+  animation: flicker 1.5s ease-in-out infinite;
+  display: inline-block;
+}
+
+/* Confetti burst placeholder */
+@keyframes confettiFall {
+  to { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+/* Level up glow */
+@keyframes levelGlow {
+  0%, 100% { box-shadow: 0 0 20px rgba(232, 168, 75, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(232, 168, 75, 0.7); }
+}
+
+.level-glow {
+  animation: levelGlow 2s ease-in-out infinite;
+}
+
+/* Touch ripple */
+.ripple {
+  position: relative;
+  overflow: hidden;
+}
+.ripple::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.05);
+  opacity: 0;
+  border-radius: inherit;
+  transition: opacity 300ms;
+}
+.ripple:active::after {
+  opacity: 1;
+}
+
+/* Phase colors as CSS vars */
+.phase-1 { --phase-color: #C7727E; }
+.phase-2 { --phase-color: #5B8DB8; }
+.phase-3 { --phase-color: #6BA354; }
+.phase-4 { --phase-color: #8B6BAF; }
