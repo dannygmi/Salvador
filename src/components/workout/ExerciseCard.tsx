@@ -8,6 +8,7 @@ import { SetTracker } from './SetTracker'
 import { WorkoutTimer } from './WorkoutTimer'
 import { PainRating } from './PainRating'
 import { MuscleViewer } from '@/components/anatomy/MuscleViewer'
+import { ExerciseAnimation } from '@/components/anatomy/ExerciseAnimation'
 import { ChevronDown, ChevronUp, Zap, Info } from 'lucide-react'
 import { clsx } from 'clsx'
 import { getPhaseAccent } from '@/data/phases'
@@ -94,6 +95,11 @@ export const ExerciseCard = ({ exercise, onComplete, phaseAccent, isCompleted = 
       {/* Expanded content */}
       {expanded && (
         <div className="border-t border-border">
+          {/* Exercise animation */}
+          <div className="flex justify-center py-3 bg-[#161412]">
+            <ExerciseAnimation poseId={exercise.poseId} size={280} />
+          </div>
+
           {/* Form cues */}
           <div className="p-4 space-y-2">
             <h4 className="text-xs font-bold text-muted uppercase tracking-wider">Form Cues</h4>

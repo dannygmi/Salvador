@@ -10,9 +10,10 @@ import { BadgeGrid } from '@/components/gamification/BadgeGrid'
 import { PHASES, getPhaseAccent } from '@/data/phases'
 import type { SymptomEntry } from '@/types'
 import { toISODateString } from '@/lib/dateUtils'
-import { TrendingUp, Activity, Award, ChevronDown } from 'lucide-react'
+import { TrendingUp, Activity, Award, ChevronDown, Dumbbell } from 'lucide-react'
+import { AthleteBoard } from '@/components/gamification/AthleteBoard'
 
-const tabs = ['Symptoms', 'Badges', 'History'] as const
+const tabs = ['Athlete', 'Symptoms', 'Badges', 'History'] as const
 type Tab = typeof tabs[number]
 
 const numericSymptomLabel = (n: number) => {
@@ -24,7 +25,7 @@ const numericSymptomLabel = (n: number) => {
 
 export default function ProgressPage() {
   const { state, loaded, logSymptoms } = useAppState()
-  const [activeTab, setActiveTab] = useState<Tab>('Symptoms')
+  const [activeTab, setActiveTab] = useState<Tab>('Athlete')
   const [showForm, setShowForm] = useState(false)
   const [form, setForm] = useState<Partial<SymptomEntry>>({
     date: toISODateString(),
@@ -74,6 +75,10 @@ export default function ProgressPage() {
         </div>
 
         <div className="px-4 space-y-4">
+          {activeTab === 'Athlete' && (
+            <AthleteBoard sessions={sessions} />
+          )}
+
           {activeTab === 'Symptoms' && (
             <>
               {/* Log check-in */}
